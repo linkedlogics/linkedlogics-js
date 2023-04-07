@@ -1,4 +1,4 @@
-package dev.linkedlogics.kafka.process;
+package dev.linkedlogics.js.script;
 
 import java.util.Optional;
 
@@ -7,7 +7,7 @@ import dev.linkedlogics.context.Status;
 import dev.linkedlogics.service.ServiceLocator;
 
 public class ProcessTestHelper {
-	public static final long MAX_WAIT_TIME = 500000;
+	public static final long MAX_WAIT_TIME = 5000;
 	public static final long WAIT_SLEEP = 1;
 
 	public static boolean waitUntil(String contextId, Status status) {
