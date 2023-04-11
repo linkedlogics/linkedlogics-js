@@ -25,6 +25,7 @@ import dev.linkedlogics.js.service.JsServiceConfigurer;
 import dev.linkedlogics.model.ProcessDefinition;
 import dev.linkedlogics.service.ContextService;
 import dev.linkedlogics.service.ServiceLocator;
+import dev.linkedlogics.service.local.LocalServiceConfigurer;
 
 public class SimpleProcess2Tests {
 
@@ -32,6 +33,7 @@ public class SimpleProcess2Tests {
 
 	@BeforeAll
 	public static void setUp() {
+		LinkedLogics.configure(new LocalServiceConfigurer());
 		LinkedLogics.configure(new JsServiceConfigurer());
 		LinkedLogics.registerLogic(SimpleProcess2Tests.class);
 		LinkedLogics.registerProcess(SimpleProcess2Tests.class);
