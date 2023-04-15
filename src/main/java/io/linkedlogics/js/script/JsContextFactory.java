@@ -1,4 +1,4 @@
-package dev.linkedlogics.js.script;
+package io.linkedlogics.js.script;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.ContextFactory;

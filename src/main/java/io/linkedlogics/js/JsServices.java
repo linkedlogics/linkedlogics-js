@@ -1,10 +1,10 @@
-package dev.linkedlogics.js;
+package io.linkedlogics.js;
 
 import java.util.List;
 
-import dev.linkedlogics.js.service.JsEvaluatorService;
-import dev.linkedlogics.service.LinkedLogicsService;
-import dev.linkedlogics.service.ServiceProvider;
+import io.linkedlogics.service.LinkedLogicsService;
+import io.linkedlogics.service.ServiceProvider;
+import io.linkedlogics.js.service.JsEvaluatorService;
 
 public class JsServices extends ServiceProvider {
 	@Override

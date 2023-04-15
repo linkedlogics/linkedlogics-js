@@ -1,4 +1,4 @@
-package dev.linkedlogics.js.service;
+package io.linkedlogics.js.service;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,8 +27,8 @@ import org.mozilla.javascript.Wrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dev.linkedlogics.js.script.JsContextFactory;
-import dev.linkedlogics.service.EvaluatorService;
+import io.linkedlogics.service.EvaluatorService;
+import io.linkedlogics.js.script.JsContextFactory;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

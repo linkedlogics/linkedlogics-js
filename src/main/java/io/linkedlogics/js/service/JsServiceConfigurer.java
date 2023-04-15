@@ -1,6 +1,6 @@
-package dev.linkedlogics.js.service;
+package io.linkedlogics.js.service;
 
-import dev.linkedlogics.service.ServiceConfigurer;
+import io.linkedlogics.service.ServiceConfigurer;
 
 public class JsServiceConfigurer extends ServiceConfigurer {
 	public JsServiceConfigurer() {
