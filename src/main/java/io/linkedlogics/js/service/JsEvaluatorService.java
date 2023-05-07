@@ -27,16 +27,19 @@ import org.mozilla.javascript.Wrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.linkedlogics.service.ConfigurableService;
 import io.linkedlogics.service.EvaluatorService;
 import io.linkedlogics.js.script.JsContextFactory;
+import io.linkedlogics.js.service.config.JsEvaluatorServiceConfig;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class JsEvaluatorService implements EvaluatorService {
+public class JsEvaluatorService extends ConfigurableService<JsEvaluatorServiceConfig> implements EvaluatorService {
 	private ConcurrentHashMap<String, Script> cache;
 	private JsContextFactory contextFactory;
 
 	public JsEvaluatorService() {
+		super(JsEvaluatorServiceConfig.class);
 		this.contextFactory = new JsContextFactory();
 		this.cache = new ConcurrentHashMap<>();
 	}
@@ -118,6 +121,10 @@ public class JsEvaluatorService implements EvaluatorService {
 
 	@Override
 	public Optional<String> checkSyntax(String expression) {
+		if (!getConfig().getCheckSyntax(true)) {
+			return Optional.empty();
+		}
+		
 		try (Context context = new JsContextFactory().enterContext()) {
 			context.compileString(expression, "id", 0, null);
 			return Optional.empty();
