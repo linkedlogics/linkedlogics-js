@@ -27,19 +27,19 @@ import org.mozilla.javascript.Wrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.linkedlogics.service.ConfigurableService;
-import io.linkedlogics.service.EvaluatorService;
 import io.linkedlogics.js.script.JsContextFactory;
 import io.linkedlogics.js.service.config.JsEvaluatorServiceConfig;
+import io.linkedlogics.service.EvaluatorService;
+import io.linkedlogics.service.config.ServiceConfiguration;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class JsEvaluatorService extends ConfigurableService<JsEvaluatorServiceConfig> implements EvaluatorService {
+public class JsEvaluatorService implements EvaluatorService {
 	private ConcurrentHashMap<String, Script> cache;
 	private JsContextFactory contextFactory;
+	private JsEvaluatorServiceConfig config = new ServiceConfiguration().getConfig(JsEvaluatorServiceConfig.class);
 
 	public JsEvaluatorService() {
-		super(JsEvaluatorServiceConfig.class);
 		this.contextFactory = new JsContextFactory();
 		this.cache = new ConcurrentHashMap<>();
 	}
@@ -121,7 +121,7 @@ public class JsEvaluatorService extends ConfigurableService<JsEvaluatorServiceCo
 
 	@Override
 	public Optional<String> checkSyntax(String expression) {
-		if (!getConfig().getCheckSyntax(true)) {
+		if (!config.getCheckSyntax(true)) {
 			return Optional.empty();
 		}
 		
